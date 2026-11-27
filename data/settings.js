@@ -11,24 +11,24 @@ window.SETTINGS = {
       min: 70,
       title: { vi: "Rất khó bị thay thế", en: "Very hard to replace" },
       text: {
-        vi: "Những gì bạn mang lại — góc nhìn, sự thấu cảm, phán đoán — là thứ AI chưa thể sao chép. Hãy tiếp tục nuôi dưỡng chúng.",
-        en: "What you bring — perspective, empathy, judgment — is something AI can't copy yet. Keep growing it."
+        vi: "Công việc bạn muốn làm và kỹ năng bạn đang có khớp với những gì nghiên cứu cho là khó tự động hoá nhất. Hãy tiếp tục nuôi dưỡng chúng.",
+        en: "The work you want and the skills you have match what research sees as hardest to automate. Keep growing them."
       }
     },
     {
       min: 40,
       title: { vi: "Bạn và AI sẽ là đồng đội", en: "You and AI will be teammates" },
       text: {
-        vi: "AI có thể làm một phần việc của bạn, nhưng bạn giữ phần quan trọng nhất. Biết dùng AI đúng lúc sẽ khiến bạn mạnh hơn.",
-        en: "AI could take part of your work, but you keep the most important part. Using AI at the right moments makes you stronger."
+        vi: "Theo ILO, phần lớn công việc sẽ thay đổi chứ không biến mất. AI có thể làm một phần việc của bạn, còn bạn giữ phần quan trọng nhất.",
+        en: "According to the ILO, most jobs will change rather than disappear. AI could take some of your tasks while you keep the most important part."
       }
     },
     {
       min: 0,
       title: { vi: "AI có thể làm thay bạn — ở thời điểm này", en: "AI could do this for you — for now" },
       text: {
-        vi: "Tin tốt: những kỹ năng khó thay thế nhất đều học được. Bắt đầu từ một điều nhỏ trong gợi ý bên dưới nhé.",
-        en: "Good news: the hardest-to-replace skills can all be learned. Start with one small step from the tips below."
+        vi: "Nhiều lựa chọn của bạn giống các việc mà nghiên cứu cho là AI làm tốt: xử lý thông tin, giấy tờ, việc lặp lại. Tin tốt: những kỹ năng khó thay thế đều học được. Bắt đầu từ gợi ý bên dưới nhé.",
+        en: "Many of your choices look like tasks research says AI does well: information, paperwork, repetition. Good news: hard-to-replace skills can all be learned. Start with the tip below."
       }
     }
   ]
