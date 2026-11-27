@@ -2,6 +2,8 @@
 
 **Bạn có thể bị AI thay thế? / Could AI replace you?**
 
+**Chơi quiz:** https://anbu47.github.io/W4GZ-your-future-existence/
+
 Một quiz của *Writing for Gen Z* (W4GZ), dựa trên 13 kỹ năng của **WEF Future of Jobs Report 2025**.
 
 - **26 câu hỏi** — mỗi kỹ năng 2 câu, mỗi câu 8 đáp án (4 kiểu "máy", 4 kiểu "người"), thứ tự đáp án được xáo trộn.
