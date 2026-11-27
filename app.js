@@ -9,7 +9,7 @@
       start: "Bắt đầu", time: "Khoảng 15 phút · Không cần đăng ký",
       kq: "Câu hỏi", kt: "Kiểm tra kỹ năng", of: (i, n) => `${i} / ${n}`,
       back: "← Quay lại", next: "Tiếp →",
-      sw: { start: "Bắt đầu", round: (i, n) => `Lượt ${i} / ${n}`, ok: "Đúng", no: "Sai", done: "Xong rồi!" },
+      sw: { start: "Bắt đầu", round: (i, n) => `Lượt ${i} / ${n}`, ok: "Đúng", no: "Sai", done: "Xong rồi!", warn: "Lưu ý: trò này chỉ chơi được 1 lần. Khi đã bấm Bắt đầu, bạn không thể quay lại hay chơi lại." },
       machine: "Máy", human: "Con người",
       edge: "Độ khó thay thế", yourType: "Nhóm lợi thế mạnh nhất của bạn",
       edges: "13 kỹ năng của bạn", grow: "Gợi ý để phát triển",
@@ -30,7 +30,7 @@
       start: "Start", time: "About 15 minutes · No sign-up",
       kq: "Question", kt: "Skill test", of: (i, n) => `${i} of ${n}`,
       back: "← Back", next: "Next →",
-      sw: { start: "Start", round: (i, n) => `Round ${i} of ${n}`, ok: "Right", no: "Wrong", done: "Done!" },
+      sw: { start: "Start", round: (i, n) => `Round ${i} of ${n}`, ok: "Right", no: "Wrong", done: "Done!", warn: "Note: you can play this only once. After you press Start, you can't go back or play again." },
       machine: "Machine", human: "Human",
       edge: "Hard-to-replace score", yourType: "Your strongest group",
       edges: "Your 13 skills", grow: "A tip to grow",
@@ -146,7 +146,7 @@
   function switchGame(ti, head) {
     if (!sw) sw = { started: false, round: 0, post: 0, stim: pick(), fb: null, done: false };
     if (!sw.started) {
-      app.innerHTML = head + `<div class="row"><button class="btn" id="go">${esc(u().sw.start)}</button></div>${backBtn()}`;
+      app.innerHTML = head + `<p class="warn">${esc(u().sw.warn)}</p><div class="row"><button class="btn" id="go">${esc(u().sw.start)}</button></div>${backBtn()}`;
       document.getElementById("go").onclick = () => { sw.started = true; render(); };
       bindBack();
       return;
