@@ -100,11 +100,20 @@
   }
 
   const advance = () => { pos++; item = 0; if (pos >= SEQ.length) screen = "result"; render(); };
-  const canBack = () => pos > 0 && SEQ[pos - 1].k === "q";
+  const canBack = () => pos > 0 || item > 0;
+  // Go back one step: previous item inside a multi-part test, otherwise the previous question or test
+  // (landing on the last part of a multi-part test). A finished rule-change game shows its "done" screen.
+  const goBack = () => {
+    if (item > 0) { item--; return render(); }
+    pos--; item = 0;
+    const s = SEQ[pos];
+    if (s.k === "t") { const its = itemsOf(C[s.i]); if (its.length) item = its.length - 1; }
+    render();
+  };
   const header = (kind) => `<div class="progress"><i style="width:${(pos / SEQ.length) * 100}%"></i></div>
     <p class="count"><span class="part${kind === "t" ? " test" : ""}">${esc(kind === "t" ? u().kt : u().kq)}</span> · ${esc(u().of(pos + 1, SEQ.length))}</p>`;
   const backBtn = () => canBack() ? `<div class="row"><button class="btn ghost" id="back">${esc(u().back)}</button></div>` : "";
-  const bindBack = () => { const b = document.getElementById("back"); if (b) b.onclick = () => { pos--; item = 0; render(); }; };
+  const bindBack = () => { const b = document.getElementById("back"); if (b) b.onclick = goBack; };
 
   function question(qi) {
     const q = Q[qi];
@@ -120,7 +129,7 @@
     if (c.type === "switch") return switchGame(ti, head);
     const its = itemsOf(c), it = its[item];
     app.innerHTML = head + `${its.length > 1 ? `<p class="meta">${item + 1} / ${its.length}</p>` : ""}<h3 class="cq">${tr(it.q)}</h3>
-      <div class="opts">${tOrd[ti][item].map((oi, k) => `<button class="opt" data-i="${oi}"><b>${LET[k]}</b><span>${tr(it.o[oi])}</span></button>`).join("")}</div>${item === 0 ? backBtn() : ""}`;
+      <div class="opts">${tOrd[ti][item].map((oi, k) => `<button class="opt" data-i="${oi}" aria-pressed="${tAns[ti][item] === oi}"><b>${LET[k]}</b><span>${tr(it.o[oi])}</span></button>`).join("")}</div>${backBtn()}`;
     app.querySelectorAll(".opt").forEach((b) => b.onclick = () => {
       tAns[ti][item] = +b.dataset.i;
       if (item < its.length - 1) { item++; render(); } else advance();
@@ -143,8 +152,9 @@
       return;
     }
     if (sw.done) {
-      app.innerHTML = head + `<p class="fb ok"><strong>${esc(u().sw.done)}</strong></p><div class="row"><button class="btn" id="next">${esc(u().next)}</button></div>`;
+      app.innerHTML = head + `<p class="fb ok"><strong>${esc(u().sw.done)}</strong></p><div class="row"><button class="btn" id="next">${esc(u().next)}</button></div>${backBtn()}`;
       document.getElementById("next").onclick = advance;
+      bindBack();
       return;
     }
     const [shape, col] = sw.stim;
