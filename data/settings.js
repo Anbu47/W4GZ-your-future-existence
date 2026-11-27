@@ -1,6 +1,13 @@
 // W4GZ — Your Future Existence: settings you can edit.
 window.SETTINGS = {
   defaultLang: "vi",           // "vi" or "en"
+
+  // Who the quiz is for. Each button on the start screen picks one; questions and tests with an "aud" entry
+  // use that audience's version (ids must match "grad" / "work" in data/questions.js and data/challenges.js).
+  audiences: [
+    { id: "grad", label: { vi: "Sinh viên mới ra trường", en: "New graduate" } },
+    { id: "work", label: { vi: "Người đã đi làm", en: "Working professional" } }
+  ],
   brand: "Writing for gen Z",
   slogan: "Create narratives worth living", // stays in English in both languages
   website: "https://www.w4gz.com",
